@@ -19,11 +19,18 @@ UPDATE_PACKAGE() {
 		mv -f $REPO_NAME $PKG_NAME
 	fi
 }
+# 从 Add-Packages.sh 读取并调用 UPDATE_PACKAGE
+while IFS= read -r line; do
+    # 忽略空行和注释
+    [[ -z "$line" || "$line" =~ ^# ]] && continue
+
+    # 调用 UPDATE_PACKAGE 函数
+    UPDATE_PACKAGE $line
+done < $GITHUB_WORKSPACE/diy/Add-Packages.sh
 
 #UPDATE_PACKAGE "包名" "项目地址" "项目分支" "pkg/name，可选，pkg为从大杂烩中单独提取包名插件；name为重命名为包名"
 UPDATE_PACKAGE "argon" "jerrykuku/luci-theme-argon" "master"
 UPDATE_PACKAGE "kucat" "sirpdboy/luci-theme-kucat" "js"
-
 UPDATE_PACKAGE "homeproxy" "VIKINGYFY/homeproxy" "main"
 UPDATE_PACKAGE "mihomo" "morytyann/OpenWrt-mihomo" "main"
 UPDATE_PACKAGE "nekoclash" "Thaolga/luci-app-nekoclash" "main"
