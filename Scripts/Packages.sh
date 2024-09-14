@@ -20,13 +20,13 @@ UPDATE_PACKAGE() {
 	fi
 }
 # 从 Add-Packages.sh 读取并调用 UPDATE_PACKAGE
-while IFS= read -r line; do
+#while IFS= read -r line; do
     # 忽略空行和注释
-    [[ -z "$line" || "$line" =~ ^# ]] && continue
+  #  [[ -z "$line" || "$line" =~ ^# ]] && continue
 
     # 调用 UPDATE_PACKAGE 函数
-    UPDATE_PACKAGE $line
-done < $GITHUB_WORKSPACE/feed.sh
+ #   UPDATE_PACKAGE $line
+#done < $GITHUB_WORKSPACE/feed.sh
 
 
 #UPDATE_PACKAGE "包名" "项目地址" "项目分支" "pkg/name，可选，pkg为从大杂烩中单独提取包名插件；name为重命名为包名"
