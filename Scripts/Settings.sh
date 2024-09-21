@@ -21,7 +21,12 @@ echo "CONFIG_LUCI_LANG_zh_Hans=y" >> ./.config
 echo "CONFIG_PACKAGE_luci-theme-$WRT_THEME=y" >> ./.config
 echo "CONFIG_PACKAGE_luci-app-$WRT_THEME-config=y" >> ./.config
 echo "CONFIG_PACKAGE_lucky=y" >> ./.config
-
+echo "CONFIG_PACKAGE_luci-app-sqm=y" >> ./.config
+echo "CONFIG_PACKAGE_kmod-sched-cake=y" >> ./.config
+echo "CONFIG_PACKAGE_kmod-tcp-bbr=y" >> ./.config
+echo "CONFIG_DEFAULT_tcp_bbr=y" >> ./.config
+# docker(只能集成)
+echo "CONFIG_PACKAGE_luci-app-dockerman=y" >> ./.config
 #手动调整的插件
 if [ -n "$WRT_PACKAGE" ]; then
 	echo "$WRT_PACKAGE" >> ./.config
